@@ -1,17 +1,22 @@
 import { SideNavigation } from '@neo4j-ndl/react';
 import { useState } from 'react';
 import { MagnifyingGlassIconOutline, DbmsIcon, BellAlertIconOutline } from '@neo4j-ndl/react/icons';
+import { useNavigate } from 'react-router-dom';
+import "./SideNav.css";
 
 export default function SideNav() {
   const [expanded, setOnExpanded] = useState(true);
-  const [selected, setSelected] = useState('instances');
+  const [selected, setSelected] = useState('files');
+  const navigate = useNavigate();
   const handleClick = (item: string) => (e: any) => {
     e.preventDefault();
     setSelected(item);
+    navigate(item);
   };
   const fullSizeClasses = 'n-w-full n-h-full';
 
   return (
+    
     <div
       style={{
         height: 'calc(100vh - 68px)',
@@ -23,16 +28,16 @@ export default function SideNav() {
         <SideNavigation.List>
           <SideNavigation.Item
             href='#'
-            selected={selected === 'search'}
-            onClick={handleClick('search')}
+            selected={selected === 'files'}
+            onClick={handleClick('files')}
             icon={<MagnifyingGlassIconOutline className={fullSizeClasses} />}
           >
             Files
           </SideNavigation.Item>
           <SideNavigation.Item
             href='#'
-            selected={selected === 'instances'}
-            onClick={handleClick('instances')}
+            selected={selected === 'people'}
+            onClick={handleClick('people')}
             icon={<DbmsIcon className={fullSizeClasses} />}
           >
             People

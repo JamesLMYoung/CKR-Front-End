@@ -1,4 +1,6 @@
-import PersonList from './Person-List/Person-List';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import PersonList from './Person-List/Person-List'
+import FileList from './File-List/File-List'
 
 export default function Content() {
 
@@ -13,8 +15,11 @@ export default function Content() {
         alignItems: 'center',
         gap: 1,
       }}
-    >
-      <PersonList></PersonList>
+    > 
+      <Routes>
+        <Route path="/people" element={<PersonList/>}></Route>
+        <Route path="/files" element={<FileList/>}></Route>
+      </Routes>
     </div>
   );
 }

@@ -3,12 +3,15 @@ import '@neo4j-ndl/base/lib/neo4j-ds-styles.css';
 
 import ThemeWrapper from './context/ThemeWrapper';
 import QuickStarter from './components/QuickStarter';
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
   return (
-    <ThemeWrapper>
-      <QuickStarter />
-    </ThemeWrapper>
+    <BrowserRouter>
+      <ThemeWrapper>
+        <QuickStarter />
+      </ThemeWrapper>
+    </BrowserRouter>
   );
 }
 
