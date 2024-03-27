@@ -7,7 +7,7 @@ export const ThemeWrapperContext = createContext({
 });
 
 interface ThemeWrapperProps {
-  children: ReactNode;
+  children: ReactNode; // Accept children as a prop
 }
 
 export default function ThemeWrapper({ children }: ThemeWrapperProps) {
@@ -25,7 +25,7 @@ export default function ThemeWrapper({ children }: ThemeWrapperProps) {
         });
       },
     }),
-    [mode]
+    []
   );
   const themeBodyInjection = (mode: string) => {
     if (mode === 'light') {
