@@ -27,7 +27,7 @@ export default function SideNav() {
             onClick={handleClick('search')}
             icon={<MagnifyingGlassIconOutline className={fullSizeClasses} />}
           >
-            Search
+            Files
           </SideNavigation.Item>
           <SideNavigation.Item
             href='#'
@@ -35,16 +35,16 @@ export default function SideNav() {
             onClick={handleClick('instances')}
             icon={<DbmsIcon className={fullSizeClasses} />}
           >
-            Instances
+            People
           </SideNavigation.Item>
-          <SideNavigation.GroupHeader>Example</SideNavigation.GroupHeader>
+          <SideNavigation.GroupHeader>Filters</SideNavigation.GroupHeader>
           <SideNavigation.Item
             href='#'
             selected={selected === 'notifications'}
             onClick={handleClick('notifications')}
             icon={<BellAlertIconOutline className={fullSizeClasses} />}
           >
-            Notifications
+            Operations
           </SideNavigation.Item>
         </SideNavigation.List>
       </SideNavigation>
