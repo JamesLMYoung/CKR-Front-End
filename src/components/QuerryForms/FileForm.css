@@ -1,3 +1,13 @@
 .Collapsible{
     padding-left:15px;
 }
+.Collapsible__contentInner{
+    border-style: solid;
+    border-left-width: 2px;
+}
+.checkbox{
+    padding-left: 15px;
+}
+.radio{
+    padding-left: 15px;
+}

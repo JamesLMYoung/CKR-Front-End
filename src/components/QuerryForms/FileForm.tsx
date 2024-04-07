@@ -2,6 +2,7 @@ import { useState } from "react";
 import Collapsible from "react-collapsible";
 import { useFilterStore } from '../../store';
 import "./FileForm.css";
+import { Col } from "react-bootstrap";
 
 export default function FileForm() {
     const [checkedContentDistribution, setCheckedContentDistribution] = useState('Any')
@@ -10,7 +11,6 @@ export default function FileForm() {
     const [checkedEditions, setCheckedEditions] = useState('Any')
     const [checkedIndustry, setCheckedIndustry] = useState('Any')
     const [checkedUsecase, setCheckedUsecase] = useState('Any')
-    const [listedOperation, setListedOperation] = useState<string[]>([])
     const [listedComponent, setListedComponent] = useState<string[]>([])
 
     const changeFileFilter = useFilterStore(state => state.changeFileFilter);
@@ -32,14 +32,6 @@ export default function FileForm() {
     }
     const onUsecaseValueChange = (item: string) => () => {
         setCheckedUsecase(item);
-    }
-    const onOperationValueChange = (item: string) => (event : React.ChangeEvent<HTMLInputElement>) => {
-        const isChecked = event.target.checked;
-        if (isChecked) {
-            setListedOperation(prevState => [...prevState, item]);
-        } else {
-            setListedOperation(prevState => prevState.filter(operation => operation !== item));
-        }
     }
     const onComponentValueChange = (item: string) => (event : React.ChangeEvent<HTMLInputElement>) => {
         const isChecked = event.target.checked;
@@ -71,7 +63,7 @@ export default function FileForm() {
             checkedEditions,
             checkedIndustry,
             checkedUsecase,
-            listedOperation,
+            listedComponent,
             listedComponent)}>
           <Collapsible trigger="ContentDistribution">
             <div className="radio">
@@ -555,443 +547,6 @@ export default function FileForm() {
                     onChange={onUsecaseValueChange('Improving Operation Efficiency')}
                 />
                 Improving Operation Efficiency
-                </label>
-            </div>
-          </Collapsible>
-          <Collapsible trigger="Operation">
-            <Collapsible trigger="Application Infrastructure">
-                <div className="checkbox">
-                    <label>
-                    <input
-                        type="checkbox"
-                        value="CI/CD/Devops"
-                        checked={listedOperation.includes("CI/CD/Devops")}
-                        onChange={onOperationValueChange('CI/CD/Devops')}
-                    />
-                    CI/CD/Devops
-                    </label>
-                </div>
-                <div className="checkbox">
-                    <label>
-                    <input
-                        type="checkbox"
-                        value="Data Management and Storage"
-                        checked={listedOperation.includes("Data Management and Storage")}
-                        onChange={onOperationValueChange('Data Management and Storage')}
-                    />
-                    Data Management and Storage
-                    </label>
-                </div>
-                <div className="checkbox">
-                    <label>
-                    <input
-                        type="checkbox"
-                        value="Disaster Recovery and High Availability"
-                        checked={listedOperation.includes("Disaster Recovery and High Availability")}
-                        onChange={onOperationValueChange('Disaster Recovery and High Availability')}
-                    />
-                    Disaster Recovery and High Availability
-                    </label>
-                </div>
-                <div className="checkbox">
-                    <label>
-                    <input
-                        type="checkbox"
-                        value="Hardware and Infrastructure Optimization"
-                        checked={listedOperation.includes("Hardware and Infrastructure Optimization")}
-                        onChange={onOperationValueChange('Hardware and Infrastructure Optimization')}
-                    />
-                    Hardware and Infrastructure Optimization
-                    </label>
-                </div>
-                <div className="checkbox">
-                    <label>
-                    <input
-                        type="checkbox"
-                        value="Microservices and Service-Oriented Architecture (SOA)"
-                        checked={listedOperation.includes("Microservices and Service-Oriented Architecture (SOA)")}
-                        onChange={onOperationValueChange('Microservices and Service-Oriented Architecture (SOA)')}
-                    />
-                    Microservices and Service-Oriented Architecture (SOA)
-                    </label>
-                </div>
-                <div className="checkbox">
-                    <label>
-                    <input
-                        type="checkbox"
-                        value="Performance Optimization and Scalability"
-                        checked={listedOperation.includes("Performance Optimization and Scalability")}
-                        onChange={onOperationValueChange('Performance Optimization and Scalability')}
-                    />
-                    Performance Optimization and Scalability
-                    </label>
-                </div>
-                <div className="checkbox">
-                    <label>
-                    <input
-                        type="checkbox"
-                        value="Security and Compliance"
-                        checked={listedOperation.includes("Security and Compliance")}
-                        onChange={onOperationValueChange('Security and Compliance')}
-                    />
-                    Security and Compliance
-                    </label>
-                </div>
-            </Collapsible>
-            <Collapsible trigger="Security and Compliance">
-                <div className="checkbox">
-                    <label>
-                    <input
-                        type="checkbox"
-                        value="Encyrption"
-                        checked={listedOperation.includes("Encyrption")}
-                        onChange={onOperationValueChange('Encyrption')}
-                    />
-                    Encyrption
-                    </label>
-                </div>
-                <div className="checkbox">
-                    <label>
-                    <input
-                        type="checkbox"
-                        value="Endpoint Protection"
-                        checked={listedOperation.includes("Endpoint Protection")}
-                        onChange={onOperationValueChange('Endpoint Protection')}
-                    />
-                    Endpoint Protection
-                    </label>
-                </div>
-                <div className="checkbox">
-                    <label>
-                    <input
-                        type="checkbox"
-                        value="Hybrid Cloud Integration"
-                        checked={listedOperation.includes("Hybrid Cloud Integration")}
-                        onChange={onOperationValueChange('Hybrid Cloud Integration')}
-                    />
-                    Hybrid Cloud Integration
-                    </label>
-                </div>
-                <div className="checkbox">
-                    <label>
-                    <input
-                        type="checkbox"
-                        value="LDAP"
-                        checked={listedOperation.includes("LDAP")}
-                        onChange={onOperationValueChange('LDAP')}
-                    />
-                    LDAP
-                    </label>
-                </div>
-                <div className="checkbox">
-                    <label>
-                    <input
-                        type="checkbox"
-                        value="Network Security"
-                        checked={listedOperation.includes("Network Security")}
-                        onChange={onOperationValueChange('Network Security')}
-                    />
-                    Network Security
-                    </label>
-                </div>
-                <div className="checkbox">
-                    <label>
-                    <input
-                        type="checkbox"
-                        value="RBAC"
-                        checked={listedOperation.includes("RBAC")}
-                        onChange={onOperationValueChange('RBAC')}
-                    />
-                    RBAC
-                    </label>
-                </div>
-                <div className="checkbox">
-                    <label>
-                    <input
-                        type="checkbox"
-                        value="SSO"
-                        checked={listedOperation.includes("SSO")}
-                        onChange={onOperationValueChange('SSO')}
-                    />
-                    SSO
-                    </label>
-                </div>
-            </Collapsible>
-            <Collapsible trigger="Visualisation">
-                <div className="checkbox">
-                    <label>
-                    <input
-                        type="checkbox"
-                        value="Business Intelligence (BI)"
-                        checked={listedOperation.includes("Business Intelligence (BI)")}
-                        onChange={onOperationValueChange('Business Intelligence (BI)')}
-                    />
-                    Business Intelligence (BI)
-                    </label>
-                </div>
-                <div className="checkbox">
-                    <label>
-                    <input
-                        type="checkbox"
-                        value="Graph Discovery, Visualisation and Analysis"
-                        checked={listedOperation.includes("Graph Discovery, Visualisation and Analysis")}
-                        onChange={onOperationValueChange('Graph Discovery, Visualisation and Analysis')}
-                    />
-                    Graph Discovery, Visualisation and Analysis
-                    </label>
-                </div>
-            </Collapsible>
-            <div className="checkbox">
-                <label>
-                <input
-                    type="checkbox"
-                    value="Application Infrastructure"
-                    checked={listedOperation.includes("Application Infrastructure")}                        
-                    onChange={onOperationValueChange('Application Infrastructure')}
-                />
-                Application Infrastructure
-                </label>
-            </div>
-            <div className="checkbox">
-                <label>
-                <input
-                    type="checkbox"
-                    value="Backup/Restore"
-                    checked={listedOperation.includes("Backup/Restore")}                        
-                    onChange={onOperationValueChange('Backup/Restore')}
-                />
-                Backup/Restore
-                </label>
-            </div>
-            <div className="checkbox">
-                <label>
-                <input
-                    type="checkbox"
-                    value="Caching"
-                    checked={listedOperation.includes("Caching")}                        
-                    onChange={onOperationValueChange('Caching')}
-                />
-                Caching
-                </label>
-            </div>
-            <div className="checkbox">
-                <label>
-                <input
-                    type="checkbox"
-                    value="Composite Databases"
-                    checked={listedOperation.includes("Composite Databases")}                        
-                    onChange={onOperationValueChange('Composite Databases')}
-                />
-                Composite Databases
-                </label>
-            </div>
-            <div className="checkbox">
-                <label>
-                <input
-                    type="checkbox"
-                    value="Data Loading"
-                    checked={listedOperation.includes("Data Loading")}                        
-                    onChange={onOperationValueChange('Data Loading')}
-                />
-                Data Loading
-                </label>
-            </div>
-            <div className="checkbox">
-                <label>
-                <input
-                    type="checkbox"
-                    value="Data Modelling"
-                    checked={listedOperation.includes("Data Modelling")}                        
-                    onChange={onOperationValueChange('Data Modelling')}
-                />
-                Data Modelling
-                </label>
-            </div>
-            <div className="checkbox">
-                <label>
-                <input
-                    type="checkbox"
-                    value="Data Science"
-                    checked={listedOperation.includes("Data Science")}                        
-                    onChange={onOperationValueChange('Data Science')}
-                />
-                Data Science
-                </label>
-            </div>
-            <div className="checkbox">
-                <label>
-                <input
-                    type="checkbox"
-                    value="Database Configuration"
-                    checked={listedOperation.includes("Database Configuration")}                        
-                    onChange={onOperationValueChange('Database Configuration')}
-                />
-                Database Configuration
-                </label>
-            </div>
-            <div className="checkbox">
-                <label>
-                <input
-                    type="checkbox"
-                    value="Database Managment"
-                    checked={listedOperation.includes("Database Managment")}                        
-                    onChange={onOperationValueChange('Database Managment')}
-                />
-                Database Managment
-                </label>
-            </div>
-            <div className="checkbox">
-                <label>
-                <input
-                    type="checkbox"
-                    value="Database Object Mapping"
-                    checked={listedOperation.includes("Database Object Mapping")}                        
-                    onChange={onOperationValueChange('Database Object Mapping')}
-                />
-                Database Object Mapping
-                </label>
-            </div>
-            <div className="checkbox">
-                <label>
-                <input
-                    type="checkbox"
-                    value="Development"
-                    checked={listedOperation.includes("Development")}                        
-                    onChange={onOperationValueChange('Development')}
-                />
-                Development
-                </label>
-            </div>
-            <div className="checkbox">
-                <label>
-                <input
-                    type="checkbox"
-                    value="GenAI, LLMs and Vector Embeddings"
-                    checked={listedOperation.includes("GenAI, LLMs and Vector Embeddings")}                        
-                    onChange={onOperationValueChange('GenAI, LLMs and Vector Embeddings')}
-                />
-                GenAI, LLMs and Vector Embeddings
-                </label>
-            </div>
-            <div className="checkbox">
-                <label>
-                <input
-                    type="checkbox"
-                    value="Health Check"
-                    checked={listedOperation.includes("Health Check")}                        
-                    onChange={onOperationValueChange('Health Check')}
-                />
-                Health Check
-                </label>
-            </div>
-            <div className="checkbox">
-                <label>
-                <input
-                    type="checkbox"
-                    value="Import/Export"
-                    checked={listedOperation.includes("Import/Export")}                        
-                    onChange={onOperationValueChange('Import/Export')}
-                />
-                Import/Export
-                </label>
-            </div>
-            <div className="checkbox">
-                <label>
-                <input
-                    type="checkbox"
-                    value="Indexes"
-                    checked={listedOperation.includes("Indexes")}                        
-                    onChange={onOperationValueChange('Indexes')}
-                />
-                Indexes
-                </label>
-            </div>
-            <div className="checkbox">
-                <label>
-                <input
-                    type="checkbox"
-                    value="Installation"
-                    checked={listedOperation.includes("Installation")}                        
-                    onChange={onOperationValueChange('Installation')}
-                />
-                Installation
-                </label>
-            </div>
-            <div className="checkbox">
-                <label>
-                <input
-                    type="checkbox"
-                    value="Logging"
-                    checked={listedOperation.includes("Logging")}                        
-                    onChange={onOperationValueChange('Logging')}
-                />
-                Logging
-                </label>
-            </div>
-            <div className="checkbox">
-                <label>
-                <input
-                    type="checkbox"
-                    value="Monitoring"
-                    checked={listedOperation.includes("Monitoring")}                        
-                    onChange={onOperationValueChange('Monitoring')}
-                />
-                Monitoring
-                </label>
-            </div>
-            <div className="checkbox">
-                <label>
-                <input
-                    type="checkbox"
-                    value="Neo4j Version Upgrade"
-                    checked={listedOperation.includes("Neo4j Version Upgrade")}                        
-                    onChange={onOperationValueChange('Neo4j Version Upgrade')}
-                />
-                Neo4j Version Upgrade
-                </label>
-            </div>
-            <div className="checkbox">
-                <label>
-                <input
-                    type="checkbox"
-                    value="Performance Diagnostics"
-                    checked={listedOperation.includes("Performance Diagnostics")}                        
-                    onChange={onOperationValueChange('Performance Diagnostics')}
-                />
-                Performance Diagnostics
-                </label>
-            </div>
-            <div className="checkbox">
-                <label>
-                <input
-                    type="checkbox"
-                    value="Querying"
-                    checked={listedOperation.includes("Querying")}                        
-                    onChange={onOperationValueChange('Querying')}
-                />
-                Querying
-                </label>
-            </div>
-            <div className="checkbox">
-                <label>
-                <input
-                    type="checkbox"
-                    value="Tuning"
-                    checked={listedOperation.includes("Tuning")}                        
-                    onChange={onOperationValueChange('Tuning')}
-                />
-                Tuning
-                </label>
-            </div>
-            <div className="checkbox">
-                <label>
-                <input
-                    type="checkbox"
-                    value="Visualisation"
-                    checked={listedOperation.includes("Visualisation")}                        
-                    onChange={onOperationValueChange('Visualisation')}
-                />
-                Visualisation
                 </label>
             </div>
           </Collapsible>
@@ -1907,12 +1462,91 @@ export default function FileForm() {
             </Collapsible>
             <Collapsible trigger="Operation">
                 <Collapsible trigger="Application Infrastructure">
+                    <Collapsible trigger="CI/CD/Devops">
+                        <div className="checkbox">
+                            <label>
+                            <input
+                                type="checkbox"
+                                value="Docker"
+                                checked={listedComponent.includes("Docker")}                        
+                                onChange={onComponentValueChange('Docker')}
+                            />
+                            Docker
+                            </label>
+                        </div>
+                        <div className="checkbox">
+                            <label>
+                            <input
+                                type="checkbox"
+                                value="GitLab"
+                                checked={listedComponent.includes("GitLab")}                        
+                                onChange={onComponentValueChange('GitLab')}
+                            />
+                            GitLab
+                            </label>
+                        </div>
+                        <div className="checkbox">
+                            <label>
+                            <input
+                                type="checkbox"
+                                value="Google Kubernetes Engine"
+                                checked={listedComponent.includes("Google Kubernetes Engine")}                        
+                                onChange={onComponentValueChange('Google Kubernetes Engine')}
+                            />
+                            Google Kubernetes Engine
+                            </label>
+                        </div>
+                        <div className="checkbox">
+                            <label>
+                            <input
+                                type="checkbox"
+                                value="Amazon"
+                                checked={listedComponent.includes("Jenkins")}                        
+                                onChange={onComponentValueChange('Jenkins')}
+                            />
+                            Jenkins
+                            </label>
+                        </div>
+                        <div className="checkbox">
+                            <label>
+                            <input
+                                type="checkbox"
+                                value="Kubernetes"
+                                checked={listedComponent.includes("Kubernetes")}                        
+                                onChange={onComponentValueChange('Kubernetes')}
+                            />
+                            Kubernetes
+                            </label>
+                        </div>
+                        <div className="checkbox">
+                            <label>
+                            <input
+                                type="checkbox"
+                                value="Neo4j plugin for Liquibase"
+                                checked={listedComponent.includes("Neo4j plugin for Liquibase")}                        
+                                onChange={onComponentValueChange('Neo4j plugin for Liquibase')}
+                            />
+                            Neo4j plugin for Liquibase
+                            </label>
+                        </div>
+                        <div className="checkbox">
+                            <label>
+                            <input
+                                type="checkbox"
+                                value="circleci"
+                                checked={listedComponent.includes("circleci")}                        
+                                onChange={onComponentValueChange('circleci')}
+                            />
+                            circleci
+                            </label>
+                        </div>
+                    </Collapsible>
                     <div className="checkbox">
                         <label>
                         <input
-                            type="checkbox"                                
+                            type="checkbox"
                             value="Amazon Web Services (AWS)"
-                            checked={listedComponent.includes("Amazon Web Services (AWS)")}
+                            checked={listedComponent.includes("Amazon Web Services (AWS)")}                        
                             onChange={onComponentValueChange('Amazon Web Services (AWS)')}
                         />
                         Amazon Web Services (AWS)
@@ -1921,9 +1555,9 @@ export default function FileForm() {
                     <div className="checkbox">
                         <label>
                         <input
-                            type="checkbox"                                
+                            type="checkbox"
                             value="Google Cloud Platform"
-                            checked={listedComponent.includes("Google Cloud Platform")}
+                            checked={listedComponent.includes("Google Cloud Platform")}                        
                             onChange={onComponentValueChange('Google Cloud Platform')}
                         />
                         Google Cloud Platform
@@ -1932,80 +1566,71 @@ export default function FileForm() {
                     <div className="checkbox">
                         <label>
                         <input
-                            type="checkbox"                                
+                            type="checkbox"
                             value="Microsoft Azure"
-                            checked={listedComponent.includes("Microsoft Azure")}
+                            checked={listedComponent.includes("Microsoft Azure")}                        
                             onChange={onComponentValueChange('Microsoft Azure')}
                         />
                         Microsoft Azure
                         </label>
                     </div>
                 </Collapsible>
-                <Collapsible trigger="CI/CD/Devops">
+                <Collapsible trigger="Data Modelling">
                     <div className="checkbox">
                         <label>
                         <input
-                            type="checkbox"                                
-                            value="Docker"
-                            checked={listedComponent.includes("Docker")}
-                            onChange={onComponentValueChange('Docker')}
+                            type="checkbox"
+                            value="Cypher Workbench"
+                            checked={listedComponent.includes("Cypher Workbench")}
+                            onChange={onComponentValueChange('Cypher Workbench')}
                         />
-                        Docker
+                        Cypher Workbench
                         </label>
                     </div>
                     <div className="checkbox">
                         <label>
                         <input
-                            type="checkbox"                                
-                            value="GitLab"
-                            checked={listedComponent.includes("GitLab")}
-                            onChange={onComponentValueChange('GitLab')}
+                            type="checkbox"
+                            value="Neosemantics"
+                            checked={listedComponent.includes("Neosemantics")}
+                            onChange={onComponentValueChange('Neosemantics')}
                         />
-                        GitLab
+                        Neosemantics
                         </label>
                     </div>
                     <div className="checkbox">
                         <label>
                         <input
-                            type="checkbox"                                
-                            value="Google Kubernetes Engine"
-                            checked={listedComponent.includes("Google Kubernetes Engine")}
-                            onChange={onComponentValueChange('Google Kubernetes Engine')}
+                            type="checkbox"
+                            value="arrows.app"
+                            checked={listedComponent.includes("arrows.app")}
+                            onChange={onComponentValueChange('arrows.app')}
                         />
-                        Google Kubernetes Engine
+                        arrows.app
+                        </label>
+                    </div>
+                </Collapsible>
+                <Collapsible trigger="Data Science">
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="Graph Data Science"
+                            checked={listedComponent.includes("Graph Data Science")}
+                            onChange={onComponentValueChange('Graph Data Science')}
+                        />
+                        Graph Data Science
                         </label>
                     </div>
                     <div className="checkbox">
                         <label>
                         <input
-                            type="checkbox"                                
-                            value="Jenkins"
-                            checked={listedComponent.includes("Jenkins")}
-                            onChange={onComponentValueChange('Jenkins')}
+                            type="checkbox"
+                            value="numpy"
+                            checked={listedComponent.includes("numpy")}
+                            onChange={onComponentValueChange('numpy')}
                         />
-                        Jenkins
-                        </label>
-                    </div>
-                    <div className="checkbox">
-                        <label>
-                        <input
-                            type="checkbox"                                
-                            value="Kubernetes"
-                            checked={listedComponent.includes("Kubernetes")}
-                            onChange={onComponentValueChange('Kubernetes')}
-                        />
-                        Kubernetes
-                        </label>
-                    </div>
-                    <div className="checkbox">
-                        <label>
-                        <input
-                            type="checkbox"                                
-                            value="circleci"
-                            checked={listedComponent.includes("circleci")}
-                            onChange={onComponentValueChange('circleci')}
-                        />
-                        circleci
+                        numpy
                         </label>
                     </div>
                 </Collapsible>
@@ -2013,12 +1638,618 @@ export default function FileForm() {
                     <div className="checkbox">
                         <label>
                         <input
-                            type="checkbox"                                
+                            type="checkbox"
+                            value="Aura Browser"
+                            checked={listedComponent.includes("Aura Browser")}
+                            onChange={onComponentValueChange('Aura Browser')}
+                        />
+                        Aura Browser
+                        </label>
+                    </div>
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="Aura CLI"
+                            checked={listedComponent.includes("Aura CLI")}
+                            onChange={onComponentValueChange('Aura CLI')}
+                        />
+                        Aura CLI
+                        </label>
+                    </div>
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="Aura Console"
+                            checked={listedComponent.includes("Aura Console")}
+                            onChange={onComponentValueChange('Aura Console')}
+                        />
+                        Aura Console
+                        </label>
+                    </div>
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="Browser"
+                            checked={listedComponent.includes("Browser")}
+                            onChange={onComponentValueChange('Browser')}
+                        />
+                        Browser
+                        </label>
+                    </div>
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="Command Line"
+                            checked={listedComponent.includes("Command Line")}
+                            onChange={onComponentValueChange('Command Line')}
+                        />
+                        Command Line
+                        </label>
+                    </div>
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="Cypher Shell"
+                            checked={listedComponent.includes("Cypher Shell")}
+                            onChange={onComponentValueChange('Cypher Shell')}
+                        />
+                        Cypher Shell
+                        </label>
+                    </div>
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="Desktop"
+                            checked={listedComponent.includes("Desktop")}
+                            onChange={onComponentValueChange('Desktop')}
+                        />
+                        Desktop
+                        </label>
+                    </div>
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="Graphileon"
+                            checked={listedComponent.includes("Graphileon")}
+                            onChange={onComponentValueChange('Graphileon')}
+                        />
+                        Graphileon
+                        </label>
+                    </div>
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="Ops Manager"
+                            checked={listedComponent.includes("Ops Manager")}
+                            onChange={onComponentValueChange('Ops Manager')}
+                        />
+                        Ops Manager
+                        </label>
+                    </div>
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
                             value="Workspace"
                             checked={listedComponent.includes("Workspace")}
                             onChange={onComponentValueChange('Workspace')}
                         />
                         Workspace
+                        </label>
+                    </div>
+                </Collapsible>
+                <Collapsible trigger="Development">
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value=".Net"
+                            checked={listedComponent.includes(".Net")}
+                            onChange={onComponentValueChange('.Net')}
+                        />
+                            .Net
+                        </label>
+                    </div>
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="Aura API"
+                            checked={listedComponent.includes("Aura API")}
+                            onChange={onComponentValueChange('Aura API')}
+                        />
+                            Aura API
+                        </label>
+                    </div>
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="BI Connector"
+                            checked={listedComponent.includes("BI Connector")}
+                            onChange={onComponentValueChange('BI Connector')}
+                        />
+                            BI Connector
+                        </label>
+                    </div>
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="Go"
+                            checked={listedComponent.includes("Go")}
+                            onChange={onComponentValueChange('Go')}
+                        />
+                            Go
+                        </label>
+                    </div>
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="GraphQL"
+                            checked={listedComponent.includes("GraphQL")}
+                            onChange={onComponentValueChange('GraphQL')}
+                        />
+                            GraphQL
+                        </label>
+                    </div>
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="HTTP API"
+                            checked={listedComponent.includes("HTTP API")}
+                            onChange={onComponentValueChange('HTTP API')}
+                        />
+                            GraphlHTTP APIytic
+                        </label>
+                    </div>
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="IntelliJ"
+                            checked={listedComponent.includes("IntelliJ")}
+                            onChange={onComponentValueChange('IntelliJ')}
+                        />
+                            IntelliJ
+                        </label>
+                    </div>
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="Java"
+                            checked={listedComponent.includes("Java")}
+                            onChange={onComponentValueChange('Java')}
+                        />
+                            Java
+                        </label>
+                    </div>
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="JavaScript"
+                            checked={listedComponent.includes("JavaScript")}
+                            onChange={onComponentValueChange('JavaScript')}
+                        />
+                            JavaScript
+                        </label>
+                    </div>
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="Kafka Connector"
+                            checked={listedComponent.includes("Kafka Connector")}
+                            onChange={onComponentValueChange('Kafka Connector')}
+                        />
+                            Kafka Connector
+                        </label>
+                    </div>
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="Linux"
+                            checked={listedComponent.includes("Linux")}
+                            onChange={onComponentValueChange('Linux')}
+                        />
+                            Linux
+                        </label>
+                    </div>
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="Needle Start Kit"
+                            checked={listedComponent.includes("Needle Start Kit")}
+                            onChange={onComponentValueChange('Needle Start Kit')}
+                        />
+                            Needle Start Kit
+                        </label>
+                    </div>
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="Object Graph Mapping Library"
+                            checked={listedComponent.includes("Object Graph Mapping Library")}
+                            onChange={onComponentValueChange('Object Graph Mapping Library')}
+                        />
+                            Object Graph Mapping Library
+                        </label>
+                    </div>
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="Graphlytic"
+                            checked={listedComponent.includes("Graphlytic")}
+                            onChange={onComponentValueChange('Graphlytic')}
+                        />
+                            Graphlytic
+                        </label>
+                    </div>
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="PHP"
+                            checked={listedComponent.includes("PHP")}
+                            onChange={onComponentValueChange('PHP')}
+                        />
+                            PHP
+                        </label>
+                    </div>
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="Python"
+                            checked={listedComponent.includes("Python")}
+                            onChange={onComponentValueChange('Python')}
+                        />
+                            Python
+                        </label>
+                    </div>
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="Spark Connector"
+                            checked={listedComponent.includes("Spark Connector")}
+                            onChange={onComponentValueChange('Spark Connector')}
+                        />
+                            Spark Connector
+                        </label>
+                    </div>
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="Spring"
+                            checked={listedComponent.includes("Spring")}
+                            onChange={onComponentValueChange('Spring')}
+                        />
+                            Spring
+                        </label>
+                    </div>
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="Spring Data Neo4j"
+                            checked={listedComponent.includes("Spring Data Neo4j")}
+                            onChange={onComponentValueChange('Spring Data Neo4j')}
+                        />
+                            Spring Data Neo4j
+                        </label>
+                    </div>
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="StoryBook"
+                            checked={listedComponent.includes("StoryBook")}
+                            onChange={onComponentValueChange('StoryBook')}
+                        />
+                            StoryBook
+                        </label>
+                    </div>
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="VsCode"
+                            checked={listedComponent.includes("VsCode")}
+                            onChange={onComponentValueChange('VsCode')}
+                        />
+                            VsCode
+                        </label>
+                    </div>
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="Warehouse Connector"
+                            checked={listedComponent.includes("Warehouse Connector")}
+                            onChange={onComponentValueChange('Warehouse Connector')}
+                        />
+                            Warehouse Connector
+                        </label>
+                    </div>
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="Windows"
+                            checked={listedComponent.includes("Windows")}
+                            onChange={onComponentValueChange('Windows')}
+                        />
+                            Windows
+                        </label>
+                    </div>
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="d3.js"
+                            checked={listedComponent.includes("d3.js")}
+                            onChange={onComponentValueChange('d3.js')}
+                        />
+                            d3.js
+                        </label>
+                    </div>
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="protovis"
+                            checked={listedComponent.includes("protovis")}
+                            onChange={onComponentValueChange('protovis')}
+                        />
+                            protovis
+                        </label>
+                    </div>
+                </Collapsible>
+                <Collapsible trigger="GenAI, LLMs and Vector Embeddings">
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="GenAI Ecosystem"
+                            checked={listedComponent.includes("GenAI Ecosystem")}
+                            onChange={onComponentValueChange('GenAI Ecosystem')}
+                        />
+                        GenAI Ecosystem
+                        </label>
+                    </div>
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="OpenAI"
+                            checked={listedComponent.includes("OpenAI")}
+                            onChange={onComponentValueChange('OpenAI')}
+                        />
+                        OpenAI
+                        </label>
+                    </div>
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="Vertex AI"
+                            checked={listedComponent.includes("Vertex AI")}
+                            onChange={onComponentValueChange('Vertex AI')}
+                        />
+                        Vertex AI
+                        </label>
+                    </div>
+                </Collapsible>
+                <Collapsible trigger="Querying">
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="APOC Core"
+                            checked={listedComponent.includes("APOC Core")}
+                            onChange={onComponentValueChange('APOC Core')}
+                        />
+                        APOC Core
+                        </label>
+                    </div>
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="APOC Extended"
+                            checked={listedComponent.includes("APOC Extended")}
+                            onChange={onComponentValueChange('APOC Extended')}
+                        />
+                        APOC Extended
+                        </label>
+                    </div>
+                </Collapsible>
+                <Collapsible trigger="Visualisation">
+                    <Collapsible trigger="Business Intelligence (BI)">
+                        <div className="checkbox">
+                            <label>
+                            <input
+                                type="checkbox"
+                                value="PowerBI"
+                                checked={listedComponent.includes("PowerBI")}
+                                onChange={onComponentValueChange('PowerBI')}
+                            />
+                            PowerBI
+                            </label>
+                        </div>
+                        <div className="checkbox">
+                            <label>
+                            <input
+                                type="checkbox"
+                                value="Tableau"
+                                checked={listedComponent.includes("Tableau")}
+                                onChange={onComponentValueChange('Tableau')}
+                            />
+                            Tableau
+                            </label>
+                        </div>
+                    </Collapsible>
+                    <Collapsible trigger="Graph Discovery, Visualisation and Analysis">
+                        <div className="checkbox">
+                            <label>
+                            <input
+                                type="checkbox"
+                                value="Graphlytic"
+                                checked={listedComponent.includes("Graphlytic")}
+                                onChange={onComponentValueChange('Graphlytic')}
+                            />
+                            Graphlytic
+                            </label>
+                        </div>
+                        <div className="checkbox">
+                            <label>
+                            <input
+                                type="checkbox"
+                                value="Linkurious"
+                                checked={listedComponent.includes("Linkurious")}
+                                onChange={onComponentValueChange('Linkurious')}
+                            />
+                            Linkurious
+                            </label>
+                        </div>
+                        <div className="checkbox">
+                            <label>
+                            <input
+                                type="checkbox"
+                                value="NetworkX"
+                                checked={listedComponent.includes("NetworkX")}
+                                onChange={onComponentValueChange('NetworkX')}
+                            />
+                            NetworkX
+                            </label>
+                        </div>
+                        <div className="checkbox">
+                            <label>
+                            <input
+                                type="checkbox"
+                                value="SemSpect"
+                                checked={listedComponent.includes("SemSpect")}
+                                onChange={onComponentValueChange('SemSpect')}
+                            />
+                            SemSpect
+                            </label>
+                        </div>
+                        <div className="checkbox">
+                            <label>
+                            <input
+                                type="checkbox"
+                                value="Tibco Spotfire"
+                                checked={listedComponent.includes("Tibco Spotfire")}
+                                onChange={onComponentValueChange('Tibco Spotfire')}
+                            />
+                            Tibco Spotfire
+                            </label>
+                        </div>
+                        <div className="checkbox">
+                            <label>
+                            <input
+                                type="checkbox"
+                                value="keylines"
+                                checked={listedComponent.includes("keylines")}
+                                onChange={onComponentValueChange('keylines')}
+                            />
+                            keylines
+                            </label>
+                        </div>
+                        <div className="checkbox">
+                            <label>
+                            <input
+                                type="checkbox"
+                                value="ogma"
+                                checked={listedComponent.includes("ogma")}
+                                onChange={onComponentValueChange('ogma')}
+                            />
+                            ogma
+                            </label>
+                        </div>
+                        <div className="checkbox">
+                            <label>
+                            <input
+                                type="checkbox"
+                                value="vis.js"
+                                checked={listedComponent.includes("vis.js")}
+                                onChange={onComponentValueChange('vis.js')}
+                            />
+                            vis.js
+                            </label>
+                        </div>
+                        <div className="checkbox">
+                            <label>
+                            <input
+                                type="checkbox"
+                                value="yfiles"
+                                checked={listedComponent.includes("yfiles")}
+                                onChange={onComponentValueChange('yfiles')}
+                            />
+                            yfiles
+                            </label>
+                        </div>
+                    </Collapsible>
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="Hume"
+                            checked={listedComponent.includes("Hume")}
+                            onChange={onComponentValueChange('Hume')}
+                        />
+                        Hume
+                        </label>
+                    </div>
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="Neodash"
+                            checked={listedComponent.includes("Neodash")}
+                            onChange={onComponentValueChange('Neodash')}
+                        />
+                        Neodash
+                        </label>
+                    </div>
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="Qlik"
+                            checked={listedComponent.includes("Qlik")}
+                            onChange={onComponentValueChange('Qlik')}
+                        />
+                        Qlik
+                        </label>
+                    </div>
+                    <div className="checkbox">
+                        <label>
+                        <input
+                            type="checkbox"
+                            value="neomodel"
+                            checked={listedComponent.includes("neomodel")}
+                            onChange={onComponentValueChange('neomodel')}
+                        />
+                        neomodel
                         </label>
                     </div>
                 </Collapsible>

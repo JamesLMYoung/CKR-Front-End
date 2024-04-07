@@ -6,7 +6,7 @@ type FilterStore = {
 }
 
 export const useFilterStore = create<FilterStore>((set) => ({
-    fileFilter: ['Any', 'Any', 'Any', 'Any', 'Any', 'Any', [], []],
+    fileFilter: ['Any', 'Any', 'Any', 'Any', 'Any', 'Any', []],
     changeFileFilter: (newFilter) => {
         set({ fileFilter: newFilter})
     }
