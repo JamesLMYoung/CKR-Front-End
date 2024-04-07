@@ -1,7 +1,8 @@
 import { SideNavigation } from '@neo4j-ndl/react';
 import { useState } from 'react';
 import { MagnifyingGlassIconOutline, DbmsIcon, BellAlertIconOutline } from '@neo4j-ndl/react/icons';
-import { useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
+import FileForm from './../QuerryForms/FileForm'
 import "./SideNav.css";
 
 export default function SideNav() {
@@ -43,14 +44,9 @@ export default function SideNav() {
             People
           </SideNavigation.Item>
           <SideNavigation.GroupHeader>Filters</SideNavigation.GroupHeader>
-          <SideNavigation.Item
-            href='#'
-            selected={selected === 'notifications'}
-            onClick={handleClick('notifications')}
-            icon={<BellAlertIconOutline className={fullSizeClasses} />}
-          >
-            Operations
-          </SideNavigation.Item>
+          <Routes>
+            <Route path="/files" element={<FileForm/>}></Route>
+          </Routes>
         </SideNavigation.List>
       </SideNavigation>
     </div>

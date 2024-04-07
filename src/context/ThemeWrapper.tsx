@@ -14,6 +14,7 @@ export default function ThemeWrapper({ children }: ThemeWrapperProps) {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   const [mode, setMode] = useState<string>(prefersDarkMode ? 'dark' : 'light');
   const [usingPreferredMode, setUsingPreferredMode] = useState<boolean>(true);
+  const [test,setTest] = useState([]);
   const themeWrapperUtils = useMemo(
     () => ({
       colorMode: mode,

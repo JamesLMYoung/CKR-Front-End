@@ -15,7 +15,7 @@ export default function Content() {
         alignItems: 'center',
         gap: 1,
       }}
-    > 
+    >
       <Routes>
         <Route path="/people" element={<PersonList/>}></Route>
         <Route path="/files" element={<FileList/>}></Route>
